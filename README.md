@@ -71,7 +71,7 @@ Ideal para estudantes de Estruturas de Dados, Algoritmos e Teoria da Computaçã
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 | Tecnologia |
 |---|
