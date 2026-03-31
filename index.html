@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>String Search Lab</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Chart.js via CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<h1>String Search Lab</h1>
+
+<!-- ===== ENTRADA ===== -->
+<section>
+  <h2>Entrada</h2>
+
+  <div class="field">
+    <label for="text-input">Texto</label>
+    <textarea id="text-input" rows="5" placeholder="Cole o texto aqui ou carregue um arquivo .txt"></textarea>
+  </div>
+
+  <div class="field file-upload">
+    <button id="btn-file-trigger" onclick="document.getElementById('file-input').click()">📂 Carregar .txt</button>
+    <input type="file" id="file-input" accept=".txt" multiple hidden />
+    <span id="file-label">Nenhum arquivo carregado</span>
+  </div>
+
+  <div class="field">
+    <label for="pattern-input">Padrão (string a buscar)</label>
+    <input type="text" id="pattern-input" placeholder="Digite o padrão..." />
+  </div>
+
+  <div class="field">
+    <label for="algorithm-select">Algoritmo</label>
+    <select id="algorithm-select"></select>
+  </div>
+
+  <div>
+    <button id="btn-run">▶ Executar</button>
+    <button id="btn-step">◈ Passo a Passo</button>
+  </div>
+
+  <p id="error-msg" hidden></p>
+</section>
+
+<!-- ===== VISUALIZAÇÃO DO TEXTO ===== -->
+<section>
+  <h2>Texto com Highlight</h2>
+  <div id="text-display"></div>
+</section>
+
+<!-- ===== PASSO A PASSO ===== -->
+<section id="step-section" hidden>
+  <h2>Passo a Passo</h2>
+
+  <div id="algo-description"></div>
+
+  <span id="step-counter"></span>
+  <div id="log-output"></div>
+
+  <div>
+    <button id="btn-prev">◀ Anterior</button>
+    <button id="btn-next">▶ Próximo</button>
+    <button id="btn-auto">⏵ Auto</button>
+  </div>
+
+  <div id="aux-panel" style="margin-top:12px;"></div>
+</section>
+
+<!-- ===== RESULTADOS ===== -->
+<section>
+  <h2>Posições Encontradas</h2>
+  <div id="positions-list">—</div>
+</section>
+
+<section>
+  <h2>Métricas</h2>
+  <table id="results-table" hidden>
+    <thead>
+      <tr>
+        <th>Algoritmo</th>
+        <th>Comparações</th>
+        <th>Tempo</th>
+        <th>Ocorrências</th>
+      </tr>
+    </thead>
+    <tbody id="results-body"></tbody>
+  </table>
+</section>
+
+<!-- ===== GRÁFICO ===== -->
+<section id="chart-section" hidden>
+  <h2>Gráfico Comparativo</h2>
+  <canvas id="chart-canvas"></canvas>
+</section>
+
+<script type="module">
+  import { UIController } from './js/ui/UIController.js';
+  new UIController();
+</script>
+
+</body>
+</html>

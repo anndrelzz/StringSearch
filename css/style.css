@@ -1,0 +1,271 @@
+/* Reset mínimo */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #141414;
+  --bg-card:   #1e1e1e;
+  --bg-input:  #2a2a2a;
+  --border:    #333;
+  --border-hi: #555;
+  --text:      #e0e0e0;
+  --text-dim:  #888;
+  --accent:    #d0d0d0;
+  --btn-bg:    #2c2c2c;
+  --btn-hover: #3a3a3a;
+}
+
+body {
+  font-family: monospace;
+  font-size: 14px;
+  background: var(--bg);
+  color: var(--text);
+  padding: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+h2 {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Seções */
+section {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 16px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+}
+
+/* Inputs */
+textarea, input[type="text"], select {
+  width: 100%;
+  font-family: monospace;
+  font-size: 13px;
+  background: var(--bg-input);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 8px;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--border-hi);
+}
+
+textarea { resize: vertical; }
+
+select option { background: var(--bg-input); }
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.field { margin-bottom: 14px; }
+
+/* Botões */
+button {
+  font-family: monospace;
+  font-size: 13px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-hi);
+  background: var(--btn-bg);
+  color: var(--text);
+  cursor: pointer;
+  border-radius: 3px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+  transition: background 0.15s;
+}
+
+button:hover    { background: var(--btn-hover); }
+button:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Upload */
+.file-upload { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+#file-label  { font-size: 12px; color: var(--text-dim); }
+
+/* Mensagem de erro */
+#error-msg {
+  color: #f08080;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* Visualização do texto */
+#text-display {
+  font-family: monospace;
+  font-size: 13px;
+  word-break: break-all;
+  white-space: pre-wrap;
+  border: 1px solid var(--border);
+  padding: 10px;
+  background: var(--bg-input);
+  min-height: 48px;
+  line-height: 2;
+  border-radius: 3px;
+  color: var(--text);
+}
+
+/* Highlights — mantém cores legíveis no fundo escuro */
+.char-match      { background: #1e4d1e; color: #7ddf7d; }
+.char-mismatch   { background: #4d1e1e; color: #df7d7d; }
+.char-found      { background: #1e4d1e; color: #7ddf7d; font-weight: bold; }
+.char-current    { background: #4d4000; color: #ffe066; }
+.char-window     { background: #1a2e3d; color: #7ab8d9; }
+.char-found-mark { background: #1e3a1e; color: #90ee90; font-weight: bold; }
+.char-skip       { background: #3a3000; color: #ffe066; text-decoration: line-through; opacity: 0.6; }
+
+/* Log passo a passo */
+#log-output {
+  font-family: monospace;
+  font-size: 13px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-hi);
+  padding: 10px;
+  background: var(--bg-input);
+  min-height: 40px;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  border-radius: 3px;
+  color: var(--accent);
+  transition: border-color 0.15s, color 0.15s;
+}
+
+/* Cores do log por ação */
+#log-output.log-match      { border-left-color: #3a8a3a; color: #7ddf7d; }
+#log-output.log-mismatch   { border-left-color: #8a3a3a; color: #df7d7d; }
+#log-output.log-encontrado { border-left-color: #3a8a3a; color: #90ee90; font-weight: bold; }
+#log-output.log-salto      { border-left-color: #8a7a1a; color: #ffe066; }
+#log-output.log-janela     { border-left-color: #1a5a8a; color: #7ab8d9; }
+
+#step-counter {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Tabelas auxiliares */
+.aux-table {
+  border-collapse: collapse;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.aux-table th,
+.aux-table td {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  text-align: center;
+}
+
+.aux-table th { background: #252525; color: var(--text-dim); }
+.aux-table td { background: var(--bg-input); }
+.aux-active   { background: #4d4000 !important; color: #ffe066; font-weight: bold; }
+
+/* Tabela de resultados */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 7px 10px;
+  text-align: left;
+}
+
+th {
+  background: #252525;
+  color: var(--text-dim);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) td { background: #232323; }
+
+/* Chips de posições */
+.position-chip {
+  display: inline-block;
+  border: 1px solid var(--border-hi);
+  padding: 2px 8px;
+  margin: 2px;
+  font-size: 12px;
+  background: var(--bg-input);
+  color: var(--accent);
+  border-radius: 2px;
+}
+
+/* Gráfico */
+#chart-section { margin-top: 4px; }
+#chart-canvas  { max-width: 100%; }
+
+/* Descrição do algoritmo no passo a passo */
+.algo-desc-box {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--border-hi);
+  background: var(--bg-input);
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  border-radius: 3px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 4px 12px;
+}
+
+.algo-desc-name {
+  font-weight: bold;
+  color: #fff;
+  font-size: 13px;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.algo-desc-complexity {
+  font-size: 11px;
+  color: var(--text-dim);
+  background: #252525;
+  border: 1px solid var(--border);
+  padding: 1px 7px;
+  border-radius: 2px;
+  align-self: center;
+  white-space: nowrap;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.algo-desc-how {
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.6;
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+}
